@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirDraw AI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2316161f' stroke='%23a855f7' stroke-width='1.5'/%3E%3Cpath d='M10 24 L16 8 L22 24' stroke='%236366f1' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M12 19 H20' stroke='%23ec4899' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M23 10 Q27 14 25 18' stroke='%2306b6d4' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="url(#logoBg)" stroke="url(#logoGrad)" stroke-width="1.8"/>
+        <!-- A for AirDraw -->
+        <path class="logo-letter" d="M12 28 L20 10 L28 28" stroke="url(#logoGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="logo-bar" d="M14.5 21.5 H25.5" stroke="url(#logoGrad2)" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- Air draw swoosh -->
+        <path class="logo-swoosh" d="M27 11 C31 13, 33 17, 31.5 21" stroke="#06b6d4" stroke-width="2.2" stroke-linecap="round"/>
+        <circle class="logo-dot" cx="31.5" cy="21" r="2" fill="#ec4899"/>
+        <defs>
+          <linearGradient id="logoGrad" x1="12" y1="10" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#818cf8"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+          <linearGradient id="logoGrad2" x1="14" y1="21" x2="26" y2="21" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#6366f1"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+          <radialGradient id="logoBg" cx="20" cy="20" r="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#0f0f14" stop-opacity="0.5"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <div class="logo-text-wrap">
+        <h1 class="logo-text">AirDraw AI</h1>
+        <span class="logo-badge">AI</span>
+      </div>
+    </div>
+    <p class="tagline">Draw in the air with your hands</p>
+  </header>
+
+  <main class="main-layout">
+    <aside class="sidebar" id="sidebar">
+      <section class="sidebar-section">
+        <h2 class="section-title">Tools</h2>
+        <div class="tool-group">
+          <button class="tool-btn active" data-tool="pencil" data-thickness="3" title="Pencil (Thin)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            </svg>
+            <span>Thin</span>
+          </button>
+          <button class="tool-btn" data-tool="pencil" data-thickness="6" title="Pencil (Medium)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            </svg>
+            <span>Medium</span>
+          </button>
+          <button class="tool-btn" data-tool="pencil" data-thickness="12" title="Pencil (Thick)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            </svg>
+            <span>Thick</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Eraser</h2>
+        <div class="tool-group">
+          <button class="tool-btn" data-tool="eraser" data-thickness="15" title="Eraser (Small)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 20H7L3 16l10-10 7 7-10 10z"/>
+              <path d="M13 6l5 5"/>
+            </svg>
+            <span>Small</span>
+          </button>
+          <button class="tool-btn" data-tool="eraser" data-thickness="30" title="Eraser (Large)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 20H7L3 16l10-10 7 7-10 10z"/>
+              <path d="M13 6l5 5"/>
+            </svg>
+            <span>Large</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Colors</h2>
+        <div class="color-palette" id="color-palette">
+          <button class="color-btn active" data-color="#ef4444" style="--swatch:#ef4444" title="Red"></button>
+          <button class="color-btn" data-color="#3b82f6" style="--swatch:#3b82f6" title="Blue"></button>
+          <button class="color-btn" data-color="#22c55e" style="--swatch:#22c55e" title="Green"></button>
+          <button class="color-btn" data-color="#eab308" style="--swatch:#eab308" title="Yellow"></button>
+          <button class="color-btn" data-color="#000000" style="--swatch:#000000" title="Black"></button>
+          <button class="color-btn" data-color="#ffffff" style="--swatch:#ffffff" title="White"></button>
+          <button class="color-btn" data-color="#f97316" style="--swatch:#f97316" title="Orange"></button>
+          <button class="color-btn" data-color="#a855f7" style="--swatch:#a855f7" title="Purple"></button>
+          <button class="color-btn" data-color="#ec4899" style="--swatch:#ec4899" title="Pink"></button>
+          <button class="color-btn" data-color="#06b6d4" style="--swatch:#06b6d4" title="Cyan"></button>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Actions</h2>
+        <div class="action-group">
+          <button class="action-btn" id="clear-btn" title="Clear Canvas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"/>
+            </svg>
+            Clear Canvas
+          </button>
+          <button class="action-btn" id="save-btn" title="Save Drawing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Save PNG
+          </button>
+        </div>
+      </section>
+
+      <section class="sidebar-section gestures-help">
+        <h2 class="section-title">Gestures</h2>
+        <ul class="gesture-list">
+          <li><span class="gesture-icon">☝️</span> Index up → Draw</li>
+          <li><span class="gesture-icon">✊</span> Fist → Pause</li>
+          <li><span class="gesture-icon">🖐️</span> Open palm → Erase</li>
+          <li><span class="gesture-icon">🖱️</span> Sidebar → Mouse click</li>
+        </ul>
+      </section>
+    </aside>
+
+    <div class="canvas-area" id="canvas-area">
+      <video id="webcam" autoplay playsinline muted></video>
+      <canvas id="draw-canvas"></canvas>
+      <div id="cursor-indicator" class="cursor-indicator hidden"></div>
+
+      <div id="tool-indicator" class="tool-indicator">
+        <div class="indicator-swatch" id="indicator-swatch"></div>
+        <div class="indicator-info">
+          <span id="indicator-tool">Pencil</span>
+          <span id="indicator-size">3px</span>
+        </div>
+      </div>
+
+      <div id="status-bar" class="status-bar">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-mode">Waiting for hand...</span>
+        <span class="status-fps" id="status-fps">-- FPS</span>
+      </div>
+
+      <div id="permission-overlay" class="permission-overlay">
+        <div class="permission-card">
+          <svg class="permission-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="8" y="16" width="48" height="36" rx="4" stroke="url(#permGrad)" stroke-width="2"/>
+            <circle cx="32" cy="34" r="10" stroke="url(#permGrad)" stroke-width="2"/>
+            <circle cx="32" cy="34" r="4" fill="url(#permGrad)"/>
+            <defs>
+              <linearGradient id="permGrad" x1="0" y1="0" x2="64" y2="64">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#ec4899"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <h2>Camera Access Required</h2>
+          <p>AirDraw AI needs your webcam to track hand gestures and let you draw in the air.</p>
+          <button id="start-btn" class="start-btn">Allow Camera & Start</button>
+          <p class="permission-note">Your video stays on your device — nothing is uploaded.</p>
+        </div>
+      </div>
+
+      <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Loading hand tracking model...</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
